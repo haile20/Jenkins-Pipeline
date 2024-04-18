@@ -59,13 +59,13 @@ pipeline {
                // }
                 echo "Deploy the code to ${env.PRODUCTION_ENVIRONMENT}"
             }
-            //post{
-            //    always{
-            //        mail to: "haile1994@gmail.com",
-            //        subject: "Deploy to production",
-            //        body: "Deploy to production was successful!"
-            //    }
-            //}
+            post{
+                always{
+                    mail to: "haile1994@gmail.com",
+                    subject: "Deploy to production",
+                    body: "Deploy to production was successful!"
+                }
+            }
         }
     }
 }
