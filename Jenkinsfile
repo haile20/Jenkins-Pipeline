@@ -18,7 +18,7 @@ pipeline {
                 success{
                     mail to: "haile1994@gmail.com",
                     subject: "Build Status Email",
-                    body: "Build was successful!"
+                    body: "Build was sucessfull!"
                 }
             }
         }
@@ -59,19 +59,13 @@ pipeline {
                // }
                 echo "Deploy the code to ${env.PRODUCTION_ENVIRONMENT}"
             }
-        }
-                stage('Complete') {
-            steps {
-                echo "Completed!"
-            }
             post{
-                always{
+                success{
                     mail to: "haile1994@gmail.com",
-                    subject: "Deploy to production",
-                    body: "Deploy to production was successful!"
+                    subject: "Build Status Email",
+                    body: "Build was sucessfull!"
                 }
             }
-        }
         }
     }
 }
