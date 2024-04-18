@@ -60,9 +60,9 @@ pipeline {
                 echo1 "Deploy the code to ${env.PRODUCTION_ENVIRONMENT}"
             }
             post{
-                fail {
+                failure {
                     mail to: "haile1994@gmail.com",
-                    subject: "Deploy to production",
+                    subject: "FAILURE: ${currentBuild.fullDisplayName}",
                     body: "Deploy to production was fail!"
                 }
             }
