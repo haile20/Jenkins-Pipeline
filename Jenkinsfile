@@ -57,13 +57,13 @@ pipeline {
                // {
                 //    sleep 5
                // }
-                echo "Deploy the code to ${env.PRODUCTION_ENVIRONMENT}"
+                echo1 "Deploy the code to ${env.PRODUCTION_ENVIRONMENT}"
             }
             post{
-                always{
+                fail {
                     mail to: "haile1994@gmail.com",
                     subject: "Deploy to production",
-                    body: "Deploy to production was successful!"
+                    body: "Deploy to production was fail!"
                 }
             }
         }
