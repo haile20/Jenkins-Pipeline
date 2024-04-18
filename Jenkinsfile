@@ -18,7 +18,7 @@ pipeline {
                 success{
                     mail to: "haile1994@gmail.com",
                     subject: "Build Status Email",
-                    body: "Build was sucessfull!"
+                    body: "Build was successful!"
                 }
             }
         }
@@ -64,6 +64,14 @@ pipeline {
             steps {
                 echo "Completed!"
             }
+            post{
+                always{
+                    mail to: "haile1994@gmail.com",
+                    subject: "Deploy to production",
+                    body: "Deploy to production was successful!"
+                }
+            }
+        }
         }
     }
 }
