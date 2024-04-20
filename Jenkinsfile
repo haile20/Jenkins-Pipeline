@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    
     environment {
         DIRECTORY_PATH = "/path/to/code"
         PRODUCTION_ENVIRONMENT = "AWS EC2"
