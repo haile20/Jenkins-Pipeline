@@ -6,9 +6,7 @@ pipeline {
         TESTING_ENVIRONMENT = "testing-environment"
         PRODUCTION_ENVIRONMENT = "production-environment"
     }
-   triggers {
-    githubPush()
-    }   
+  
     stages {
         stage('Build') {
             steps {
