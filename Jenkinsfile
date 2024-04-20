@@ -15,15 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Build the source code using ${env.BUILD_AUTOMATION}"
-                echo "Compiling and packaging the code"
-                bat "java -version"
-            }
-            post{
-                success{
-                    mail to: "haile1994@gmail.com",
-                    subject: "Build Status Email",
-                    body: "Build was successful!"
-                }
+                echo "Compiling and packaging the code."
             }
         }
         
@@ -91,26 +83,7 @@ pipeline {
         
         stage('Deploy to Production') {
             steps {
-           //     retry(2){
-           //         echo "Deploy the code to ${env.PRODUCTION_ENVIRONMENT}"
-             //   }
-              //  timeout(time: 3, unit: 'SECONDS')
-               // {
-                //    sleep 5
-               // }
                 echo "Deploy the application to ${env.PRODUCTION_ENVIRONMENT}"
-            }
-            post{
-                failure {
-                    mail to: "haile1994@gmail.com",
-                    subject: "FAILURE: ${currentBuild.fullDisplayName}",
-                    body: "Deploy to production was fail!"
-                }
-                success {
-                    mail to: "haile1994@gmail.com",
-                    subject: "SUCCESS: ${currentBuild.fullDisplayName}",
-                    body: "Deploy to production was successful!"
-                }
             }
         }
     }
