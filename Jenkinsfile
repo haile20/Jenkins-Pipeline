@@ -12,7 +12,6 @@ pipeline {
                 echo "Fetch the source code from the directory path ${env.DIRECTORY_PATH}"
                 echo "Compile the code and generate any necessary artifacts."
                 bat "java -version"
-                bat "java -jar jenkins.war"
             }
             post{
                 success{
