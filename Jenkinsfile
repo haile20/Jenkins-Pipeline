@@ -3,14 +3,19 @@ pipeline {
     
     environment {
         DIRECTORY_PATH = "/path/to/code"
-        TESTING_ENVIRONMENT = "testing-environment"
-        PRODUCTION_ENVIRONMENT = "production-environment"
+        PRODUCTION_ENVIRONMENT = "AWS EC2"
+        BUILD_AUTOMATION = "Jenkins"
+        UNIT_TEST = "NUnit"
+        INTEGRATION_TEST = "Testsigma"
+        CODE_ANALYSIS = "FindBugs"
+        SECURITY_SCAN = "SonarQube"
+        STAGING_SERVER = "AWS EC2"
     }
     stages {
         stage('Build') {
             steps {
-                echo "Fetch the source code from the directory path ${env.DIRECTORY_PATH}"
-                echo "Compile the code and generate any necessary artifacts."
+                echo "Build the source code using ${env.BUILD_AUTOMATION}"
+                echo "Compiling and packaging the code"
                 bat "java -version"
             }
             post{
@@ -24,26 +29,63 @@ pipeline {
         
         stage('Test') {
             steps {
-                echo "Unit tests"
-                echo "Integration tests"
+                echo "Running Unit Tests using ${env.UNIT_TEST}"
+                sleep 5
+                echo "Running Integration Tests using ${env.INTEGRATION_TEST}"
+                sleep 5
+                echo "Unit and Integration Test completed!"
+            }
+            post{
+                failure {
+                    mail to: "haile1994@gmail.com",
+                    subject: "TESTING - FAILURE: ${currentBuild.fullDisplayName}",
+                    body: "Running unit and integration tests failed!"
+                }
+                success {
+                    mail to: "haile1994@gmail.com",
+                    subject: "TESTING - SUCCESS: ${currentBuild.fullDisplayName}",
+                    body: "Running unit and integration tests were successful!"
+                }
             }
         }
         
-        stage('Code Quality Check') {
+        stage('Code Analysis') {
             steps {
-                echo "Check the quality of the code"
+                echo "Check the quality of the code using ${env.CODE_ANALYSIS}"
+                sleep 5
+                echo "Code Analysis completed!"
             }
         }
         
-        stage('Approval') {
+        stage('Security Scan') {
             steps {
-                sleep 10
+                echo "Performing security scan on the code using ${env.SECURITY_SCAN}"
+                sleep 5
+                echo "Security Scan completed!"
+            }
+            post{
+                failure {
+                    mail to: "haile1994@gmail.com",
+                    subject: "SECURITY SCAN - FAILURE: ${currentBuild.fullDisplayName}",
+                    body: "Security scan failed!"
+                }
+                success {
+                    mail to: "haile1994@gmail.com",
+                    subject: "SECURITY SCAN - SUCCESS: ${currentBuild.fullDisplayName}",
+                    body: "Security scan was successful!"
+                }
             }
         }
         
-        stage('Deploy') {
+        stage('Deploy to Staging') {
             steps {
-                echo "Deploy the application to ${env.TESTING_ENVIRONMENT}"
+                echo "Deploying the application to ${env.STAGING_SERVER}"
+            }
+        }
+
+        stage('Integration Tests on Staging') {
+            steps {
+                echo "Running integration tests on the staging environment."
             }
         }
         
@@ -56,7 +98,7 @@ pipeline {
                // {
                 //    sleep 5
                // }
-                echo "Deploy the code to ${env.PRODUCTION_ENVIRONMENT}"
+                echo "Deploy the application to ${env.PRODUCTION_ENVIRONMENT}"
             }
             post{
                 failure {
