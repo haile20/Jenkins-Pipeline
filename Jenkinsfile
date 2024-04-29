@@ -25,7 +25,7 @@ pipeline {
                 echo "Running Integration Tests using ${env.INTEGRATION_TEST}"
                 sleep 5
                 script {
-                    bat "xcopy /Y \"C:\\Users\\haile\\test.txt" \"${WORKSPACE}\\jenkins.out\""
+                    bat "xcopy /Y \"C:\\Users\\haile\\test.txt\" \"${WORKSPACE}\\test.txt\""
                 }
                 sleep 5
                 echo "Unit and Integration Test completed!"
@@ -44,7 +44,7 @@ pipeline {
         subject: "Hello",
         body: "Testing",
         to: "haile1994@gmail.com",
-        attachmentsPattern: "${WORKSPACE}/jenkins.out" // Path to the copied log file
+        attachmentsPattern: "${WORKSPACE}/test.txt" // Path to the copied log file
     )
                 }
             }
