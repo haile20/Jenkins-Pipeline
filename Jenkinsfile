@@ -40,7 +40,9 @@ pipeline {
                     mail to: "haile1994@gmail.com",
                     subject: "TESTING - SUCCESS: ${currentBuild.fullDisplayName}",
                     body: "Running unit and integration tests were successful!"
-                    attachmentsPattern: "${WORKSPACE}/jenkins.out"
+                    emailext (
+                        attachmentsPattern: "${WORKSPACE}/jenkins.out"
+                        )
                 }
             }
         }
