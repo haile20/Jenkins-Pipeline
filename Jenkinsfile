@@ -24,6 +24,8 @@ pipeline {
                 sleep 5
                 echo "Running Integration Tests using ${env.INTEGRATION_TEST}"
                 sleep 5
+                sh 'cp "C:\\Program Files\\Jenkins\\logs\\jenkins.out" "${WORKSPACE}/jenkins.out"'
+                sleep 5
                 echo "Unit and Integration Test completed!"
             }
             post{
