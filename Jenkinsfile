@@ -44,7 +44,7 @@ pipeline {
         subject: "Hello",
         body: "Testing",
         to: "haile1994@gmail.com",
-        attachmentsPattern: "**/*.log"
+        attachmentsPattern: "*.log"
     )
                 }
             }
