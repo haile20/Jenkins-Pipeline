@@ -31,7 +31,6 @@ pipeline {
                     mail to: "haile1994@gmail.com",
                     subject: "TESTING - FAILURE: ${currentBuild.fullDisplayName}",
                     body: "Running unit and integration tests failed!"
-                    attachLog: true
                 }
                 success {
                     mail to: "haile1994@gmail.com",
