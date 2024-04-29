@@ -44,7 +44,9 @@ pipeline {
         subject: "Hello",
         body: "Testing",
         to: "haile1994@gmail.com",
-        attachmentsPattern: "${WORKSPACE}/*.txt" // Path to the copied log file
+        attachmentsPattern: "<fileset dir="D:\Test_Reports">
+    <include name="test-report-failed.zip" />
+</fileset>" // Path to the copied log file
     )
                 }
             }
