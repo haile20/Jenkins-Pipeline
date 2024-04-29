@@ -25,7 +25,7 @@ pipeline {
                 echo "Running Integration Tests using ${env.INTEGRATION_TEST}"
                 sleep 5
                 script {
-                    bat "xcopy /Y \"C:\\Program Files\\Jenkins\\jenkins.out\" \"${WORKSPACE}\\jenkins.out\""
+                    bat "xcopy /Y \"C:\\Users\\haile\\test.txt" \"${WORKSPACE}\\jenkins.out\""
                 }
                 sleep 5
                 echo "Unit and Integration Test completed!"
