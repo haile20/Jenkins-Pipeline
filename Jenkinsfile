@@ -31,11 +31,13 @@ pipeline {
                     mail to: "haile1994@gmail.com",
                     subject: "TESTING - FAILURE: ${currentBuild.fullDisplayName}",
                     body: "Running unit and integration tests failed!"
+                    attachmentsPattern: 'path/to/logs/*.log'
                 }
                 success {
                     mail to: "haile1994@gmail.com",
                     subject: "TESTING - SUCCESS: ${currentBuild.fullDisplayName}",
                     body: "Running unit and integration tests were successful!"
+                    attachmentsPattern: 'path/to/logs/*.log'
                 }
             }
         }
