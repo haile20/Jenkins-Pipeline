@@ -44,7 +44,7 @@ pipeline {
         subject: "Hello",
         body: "Testing",
         to: "haile1994@gmail.com",
-        attachmentsPattern: "${WORKSPACE}/test.txt" // Path to the copied log file
+        attachmentsPattern: "${WORKSPACE}/*.txt" // Path to the copied log file
     )
                 }
             }
