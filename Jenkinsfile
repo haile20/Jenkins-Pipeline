@@ -36,7 +36,7 @@ pipeline {
                     mail to: "haile1994@gmail.com",
                     subject: "TESTING - SUCCESS: ${currentBuild.fullDisplayName}",
                     body: "Running unit and integration tests were successful!"
-                    attachLog: True
+                    attachmentsPattern: "${WORKSPACE}/jenkins.out"
                 }
             }
         }
