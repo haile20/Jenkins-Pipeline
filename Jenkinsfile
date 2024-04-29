@@ -41,6 +41,7 @@ pipeline {
                     subject: "TESTING - SUCCESS: ${currentBuild.fullDisplayName}",
                     body: "Running unit and integration tests were successful!"
                     emailext (
+                        to: "haile1994@gmail.com",
                         attachmentsPattern: "${WORKSPACE}/jenkins.out"
                         )
                 }
