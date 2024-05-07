@@ -34,9 +34,9 @@ pipeline {
                     attachLog: true
                 }
                 success {
-                    emailext subject: "TESTING STATUS - SUCCESS: ${currentBuild.fullDisplayName}",
+                    emailext subject: 'TESTING STATUS - SUCCESS: ${currentBuild}',
                     to: 'haile1994@gmail.com',
-                    body: "The pipeline testing status is ${buildStatus}",
+                    body: 'The pipeline testing status is',
                     attachLog: true
                 }
             }
