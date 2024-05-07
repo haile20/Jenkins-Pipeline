@@ -40,12 +40,13 @@ pipeline {
                     //mail to: "haile1994@gmail.com",
                     //subject: "TESTING - SUCCESS: ${currentBuild.fullDisplayName}",
                     //body: "Running unit and integration tests were successful!"
-    emailext(
-        subject: "Hello",
-        body: "Testing",
-        to: "haile1994@gmail.com",
-        attachmentsPattern: "*.log"
-    )
+                            script {
+                            // Email configuration
+                            emailext subject: "Pipeline Failure",
+                                      body: "Your Jenkins pipeline has failed.",
+                                      to: "recipient@example.com",
+                                      attachLog: true
+                    }
                 }
             }
         }
