@@ -24,30 +24,20 @@ pipeline {
                 sleep 5
                 echo "Running Integration Tests using ${env.INTEGRATION_TEST}"
                 sleep 5
-                //script {
-                //    bat "xcopy /Y \"C:\\Users\\haile\\test.txt\" \"${WORKSPACE}\\test.txt\""
-                //}
-                //sleep 5
                 echo "Unit and Integration Test completed!"
             }
             post{
-                //failure {
-                //    mail to: "haile1994@gmail.com",
-                //    subject: "TESTING - FAILURE: ${currentBuild.fullDisplayName}",
-                //    body: "Running unit and integration tests failed!"
-                //}
-                always {
-            emailext subject: 'Pipeline Build Status',
-                body: "TESTING - FAILURE: ${currentBuild.fullDisplayName}",
-                to: 'haile1994@gmail.com',
-                attachLog: true  // Correct parameter to attach build log
-                            //script {
-                            // Email configuration
-                            //emailext subject: "Pipeline Failure",
-                            //          body: "Your Jenkins pipeline has failed.",
-                            //          to: "haile1994@gmail.com",
-                            //          attachLog: true
-                    //}
+                failure {
+                    emailext subject: 'TESTING STATUS - FAILURE: ${currentBuild.fullDisplayName}',
+                    to: 'haile1994@gmail.com',
+                    body: 'Check log attachment below',
+                    attachLog: true
+                }
+                success {
+                    emailext subject: 'TESTING STATUS - SUCCESS: ${currentBuild.fullDisplayName}',
+                    to: 'haile1994@gmail.com',
+                    body: 'The pipeline build status is ${currentBuild.currentResult}',
+                    attachLog: true
                 }
             }
         }
