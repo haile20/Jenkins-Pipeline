@@ -28,15 +28,15 @@ pipeline {
             }
             post{
                 failure {
-                    emailext subject: 'TESTING STATUS - FAILURE: ${currentBuild.fullDisplayName}',
+                    emailext subject: 'TESTING STATUS - FAILURE',
                     to: 'haile1994@gmail.com',
-                    body: 'Check log attachment below',
+                    body: 'The pipeline testing status failed! Check the log attachment below',
                     attachLog: true
                 }
                 success {
-                    emailext subject: 'TESTING STATUS - SUCCESS: ${currentBuild}',
+                    emailext subject: 'TESTING STATUS - SUCCESS',
                     to: 'haile1994@gmail.com',
-                    body: 'The pipeline testing status is',
+                    body: 'The pipeline testing status was successful! Check the log attachment below',
                     attachLog: true
                 }
             }
@@ -58,14 +58,16 @@ pipeline {
             }
             post{
                 failure {
-                    mail to: "haile1994@gmail.com",
-                    subject: "SECURITY SCAN - FAILURE: ${currentBuild.fullDisplayName}",
-                    body: "Security scan failed!"
+                    emailext subject: 'SECURITY SCANNING STATUS - FAILURE',
+                    to: 'haile1994@gmail.com',
+                    body: 'The pipeline security scanning status failed! Check the log attachment below',
+                    attachLog: true
                 }
                 success {
-                    mail to: "haile1994@gmail.com",
-                    subject: "SECURITY SCAN - SUCCESS: ${currentBuild.fullDisplayName}",
-                    body: "Security scan was successful!"
+                    emailext subject: 'SECURITY SCANNING STATUS - SUCCESS',
+                    to: 'haile1994@gmail.com',
+                    body: 'The pipeline security scanning status was successful! Check the log attachment below',
+                    attachLog: true
                 }
             }
         }
