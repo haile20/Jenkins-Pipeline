@@ -37,10 +37,10 @@ pipeline {
                 //    body: "Running unit and integration tests failed!"
                 //}
                 always {
-                    mail to: "haile1994@gmail.com",
-                    subject: "TESTING - SUCCESS: ${currentBuild.fullDisplayName}",
-                    body: "Running unit and integration tests were successful!",
-                    attachLog: true
+            emailext subject: 'Pipeline Build Status',
+                body: 'The pipeline build status is ${currentBuild.currentResult}',
+                to: 'recipient@example.com',
+                attachLog: true  // Correct parameter to attach build log
                             //script {
                             // Email configuration
                             //emailext subject: "Pipeline Failure",
