@@ -37,16 +37,16 @@ pipeline {
                 //    body: "Running unit and integration tests failed!"
                 //}
                 always {
-                    //mail to: "haile1994@gmail.com",
-                    //subject: "TESTING - SUCCESS: ${currentBuild.fullDisplayName}",
-                    //body: "Running unit and integration tests were successful!"
-                            script {
+                    mail to: "haile1994@gmail.com",
+                    subject: "TESTING - SUCCESS: ${currentBuild.fullDisplayName}",
+                    body: "Running unit and integration tests were successful!"
+                            //script {
                             // Email configuration
-                            emailext subject: "Pipeline Failure",
-                                      body: "Your Jenkins pipeline has failed.",
-                                      to: "haile1994@gmail.com",
-                                      attachLog: true
-                    }
+                            //emailext subject: "Pipeline Failure",
+                            //          body: "Your Jenkins pipeline has failed.",
+                            //          to: "haile1994@gmail.com",
+                            //          attachLog: true
+                    //}
                 }
             }
         }
