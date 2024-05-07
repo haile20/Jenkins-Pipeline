@@ -44,7 +44,7 @@ pipeline {
                             // Email configuration
                             emailext subject: "Pipeline Failure",
                                       body: "Your Jenkins pipeline has failed.",
-                                      to: "recipient@example.com",
+                                      to: "haile1994@gmail.com",
                                       attachLog: true
                     }
                 }
