@@ -39,7 +39,7 @@ pipeline {
                 always {
             emailext subject: 'Pipeline Build Status',
                 body: 'The pipeline build status is ${currentBuild.currentResult}',
-                to: 'recipient@example.com',
+                to: 'haile1994@gmail.com',
                 attachLog: true  // Correct parameter to attach build log
                             //script {
                             // Email configuration
