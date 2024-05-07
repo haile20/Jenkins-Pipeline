@@ -31,12 +31,12 @@ pipeline {
                 echo "Unit and Integration Test completed!"
             }
             post{
-                failure {
-                    mail to: "haile1994@gmail.com",
-                    subject: "TESTING - FAILURE: ${currentBuild.fullDisplayName}",
-                    body: "Running unit and integration tests failed!"
-                }
-                success {
+                //failure {
+                //    mail to: "haile1994@gmail.com",
+                //    subject: "TESTING - FAILURE: ${currentBuild.fullDisplayName}",
+                //    body: "Running unit and integration tests failed!"
+                //}
+                always {
                     //mail to: "haile1994@gmail.com",
                     //subject: "TESTING - SUCCESS: ${currentBuild.fullDisplayName}",
                     //body: "Running unit and integration tests were successful!"
