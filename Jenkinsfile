@@ -69,6 +69,19 @@ pipeline {
                     body: 'The pipeline security scanning status was successful! Check the log attachment below',
                     attachLog: true
                 }
+                always {
+                    script {
+                        // ... other script actions  ...
+        
+                        emailext attachLog: true, 
+                                 body: '''${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n 
+                                          More info at: ${env.BUILD_URL}''', 
+                                 mimeType: 'text/plain',
+                                 recipientProviders: [[$class: 'CulpritsRecipientProvider']], // Adjust if needed
+                                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+                                 to: "haile1994@gmail.com" 
+                    }
+                }
             }
         }
         
