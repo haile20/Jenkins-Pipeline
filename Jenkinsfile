@@ -63,13 +63,11 @@ pipeline {
                     body: 'The pipeline security scanning status failed! Check the log attachment below',
                     attachLog: true
                 }
-                always {
-                    script {
-                        emailext subject: 'SECURITY SCANNING STATUS - ${currentBuild.currentResult}: Job ${env.JOB_NAME}',
-                        to: 'haile1994@gmail.com',
-                        body: 'The pipeline security scanning status was ${currentBuild.currentResult}! Check the log attachment below',
-                        attachLog: true
-                    }
+                success {
+                    emailext subject: 'SECURITY SCANNING STATUS - SUCCESS',
+                    to: 'haile1994@gmail.com',
+                    body: 'The pipeline security scanning status was successful! Check the log attachment below',
+                    attachLog: true
                 }
             }
         }
